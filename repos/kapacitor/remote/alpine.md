@@ -1,0 +1,76 @@
+## `kapacitor:alpine`
+
+```console
+$ docker pull kapacitor@sha256:601c43fa03415b10bad3b140984ea8f458bba0fd3d34db4413004626ab7a533a
+```
+
+-	Manifest MIME: `application/vnd.docker.distribution.manifest.list.v2+json`
+-	Platforms:
+	-	linux; amd64
+
+### `kapacitor:alpine` - linux; amd64
+
+```console
+$ docker pull kapacitor@sha256:ec7badc3d2b9660fbb8362d560e590a5a11536da60414356ba370f7da214ed24
+```
+
+-	Docker Version: 18.09.7
+-	Manifest MIME: `application/vnd.docker.distribution.manifest.v2+json`
+-	Total Size: **23.1 MB (23148286 bytes)**  
+	(compressed transfer size, not on-disk size)
+-	Image ID: `sha256:3ccdbf941acbff8fdeeb125726f579391ab3eac90b1e442276e625b7c792e3cf`
+-	Entrypoint: `["\/entrypoint.sh"]`
+-	Default Command: `["kapacitord"]`
+
+```dockerfile
+# Fri, 29 May 2020 21:19:46 GMT
+ADD file:c92c248239f8c7b9b3c067650954815f391b7bcb09023f984972c082ace2a8d0 in / 
+# Fri, 29 May 2020 21:19:46 GMT
+CMD ["/bin/sh"]
+# Thu, 23 Jul 2020 05:22:10 GMT
+RUN echo 'hosts: files dns' >> /etc/nsswitch.conf
+# Tue, 01 Sep 2020 00:38:19 GMT
+RUN apk add --no-cache ca-certificates &&     update-ca-certificates
+# Tue, 01 Sep 2020 01:04:56 GMT
+ENV KAPACITOR_VERSION=1.5.6
+# Fri, 02 Oct 2020 01:39:13 GMT
+RUN set -ex &&     mkdir ~/.gnupg;     echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf;     apk add --no-cache --virtual .build-deps wget gnupg tar &&     for key in         05CE15085FC09D18E99EFB22684A14CF2582E0C5 ;     do         gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key" ||         gpg --keyserver pgp.mit.edu --recv-keys "$key" ||         gpg --keyserver keyserver.pgp.com --recv-keys "$key" ;     done &&     wget --no-verbose https://dl.influxdata.com/kapacitor/releases/kapacitor-${KAPACITOR_VERSION}-static_linux_amd64.tar.gz.asc &&     wget --no-verbose https://dl.influxdata.com/kapacitor/releases/kapacitor-${KAPACITOR_VERSION}-static_linux_amd64.tar.gz &&     gpg --batch --verify kapacitor-${KAPACITOR_VERSION}-static_linux_amd64.tar.gz.asc kapacitor-${KAPACITOR_VERSION}-static_linux_amd64.tar.gz &&     mkdir -p /usr/src &&     tar -C /usr/src -xzf kapacitor-${KAPACITOR_VERSION}-static_linux_amd64.tar.gz &&     rm -f /usr/src/kapacitor-*/kapacitor.conf &&     chmod +x /usr/src/kapacitor-*/* &&     cp -a /usr/src/kapacitor-*/* /usr/bin/ &&     gpgconf --kill all &&     rm -rf *.tar.gz* /usr/src /root/.gnupg &&     apk del .build-deps
+# Fri, 02 Oct 2020 01:39:13 GMT
+COPY file:9450c5dcbc0a583243f987f682dc6c44d9e4a3f1c31d1bb9957f313457e444ec in /etc/kapacitor/kapacitor.conf 
+# Fri, 02 Oct 2020 01:39:13 GMT
+EXPOSE 9092
+# Fri, 02 Oct 2020 01:39:14 GMT
+VOLUME [/var/lib/kapacitor]
+# Fri, 02 Oct 2020 01:39:14 GMT
+COPY file:a64543022a380a96e18ddc4e841e034238df340064743d570fa109d5086b123a in /entrypoint.sh 
+# Fri, 02 Oct 2020 01:39:14 GMT
+ENTRYPOINT ["/entrypoint.sh"]
+# Fri, 02 Oct 2020 01:39:15 GMT
+CMD ["kapacitord"]
+```
+
+-	Layers:
+	-	`sha256:df20fa9351a15782c64e6dddb2d4a6f50bf6d3688060a34c4014b0d9a752eb4c`  
+		Last Modified: Fri, 29 May 2020 21:20:06 GMT  
+		Size: 2.8 MB (2797541 bytes)  
+		MIME: application/vnd.docker.image.rootfs.diff.tar.gzip
+	-	`sha256:15ed77ee1a57b06efa2aeb4cc06845d93ce8c6e8b2ca507267000b5a6edddffa`  
+		Last Modified: Thu, 23 Jul 2020 05:23:08 GMT  
+		Size: 154.0 B  
+		MIME: application/vnd.docker.image.rootfs.diff.tar.gzip
+	-	`sha256:61626b3b2d7f1da2eb5ae3486f7e2baf21fb5b7dd993595b8fe0fbe2a34445d6`  
+		Last Modified: Tue, 01 Sep 2020 00:39:25 GMT  
+		Size: 280.8 KB (280831 bytes)  
+		MIME: application/vnd.docker.image.rootfs.diff.tar.gzip
+	-	`sha256:22a8d572845cce717fde5f35ff512fd54a4a7d57858a0533316976c150fa154e`  
+		Last Modified: Fri, 02 Oct 2020 01:39:41 GMT  
+		Size: 20.1 MB (20069308 bytes)  
+		MIME: application/vnd.docker.image.rootfs.diff.tar.gzip
+	-	`sha256:4f943370a3f0984909fe0a602c1b91554241d00810b19d4dc2bf4ea8a79d832b`  
+		Last Modified: Fri, 02 Oct 2020 01:39:35 GMT  
+		Size: 224.0 B  
+		MIME: application/vnd.docker.image.rootfs.diff.tar.gzip
+	-	`sha256:1e82ea3c666b1fa565cb994b107c6d1fe53d6f36258ae08ac40b48beef2fc7d8`  
+		Last Modified: Fri, 02 Oct 2020 01:39:36 GMT  
+		Size: 228.0 B  
+		MIME: application/vnd.docker.image.rootfs.diff.tar.gzip

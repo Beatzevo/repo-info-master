@@ -1,0 +1,14 @@
+FROM oisupport/perl-bashbrew
+
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends curl; \
+	rm -rf /var/lib/apt/lists/*
+
+# http://mojolicious.org/perldoc/Mojolicious/Guides/FAQ#What-does-Inactivity-timeout-mean
+ENV MOJO_INACTIVITY_TIMEOUT 120
+# The Hub takes a while to respond, and the time it takes to respond increases as we stack up more pending requests. :)
+# (We already set this in Mojo::UserAgent, but this value affects our replies to curl.)
+
+COPY .remote.pl /usr/local/bin/remote.pl
+ENTRYPOINT ["remote.pl"]
